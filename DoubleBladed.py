@@ -24,53 +24,9 @@ with open("config.json") as f:
 
 token = config.get("token")
 prefix = config.get("prefix")
-Sniper = config.get("Nitro-Sniper")
 
 client = commands.Bot(command_prefix=prefix,self_bot=True)
 client.remove_command(name="help")
-
-if Sniper == "On" or Sniper == "on":
-    sniper = "On"
-    @client.listen('on_message')
-    async def nitrosnipe(message):
-        if 'discord.gift/' in message.content:
-            code = re.search("discord.gift/(.*)", message.content).group(1)
-            token = config.get('token')
-                    
-            headers = {'Authorization': token}
-            r = requests.post(
-                f'https://discordapp.com/api/v6/entitlements/gift-codes/{code}/redeem', 
-                headers=headers,
-            ).text
-            
-
-            if 'This gift has been redeemed already.' in r:
-                print(Fore.LIGHTRED_EX + "══════════════════════════════════════════════════")
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Nitro Code sent by: " + Fore.RESET + f"{message.author}")
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Server: " + Fore.RESET + f"{message.guild}")
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Channel: " + Fore.RESET + f"{message.channel}")
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Status: " + Fore.RESET + "Already Redeemed")
-                print(Fore.LIGHTRED_EX + "══════════════════════════════════════════════════")
-
-            elif 'subscription_plan' in r:
-                print(Fore.LIGHTRED_EX + "══════════════════════════════════════════════════")
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Nitro Code sent by: " + Fore.RESET + f"{message.author}" + Fore.RESET)
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Server: " + Fore.RESET + f"{message.guild}" + Fore.RESET)
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Channel: " + Fore.RESET + f"{message.channel}" + Fore.RESET)
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Status: " + Fore.RESET + "Nitro Success")
-                print(Fore.LIGHTRED_EX + "══════════════════════════════════════════════════")
-
-
-            elif 'Unknown Gift Code' in r:
-                print(Fore.LIGHTRED_EX + "══════════════════════════════════════════════════")
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Nitro Code sent by: " + Fore.RESET + f"{message.author}" + Fore.RESET)
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Server: " + Fore.RESET + f"{message.guild}" + Fore.RESET)
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Channel: " + Fore.RESET + f"{message.channel}" + Fore.RESET)
-                print(Fore.LIGHTRED_EX + "[Nitro Sniper] " + Fore.RESET + Fore.LIGHTRED_EX + f"Status: " + Fore.RESET + "Unknown Code")
-                print(Fore.LIGHTRED_EX + "══════════════════════════════════════════════════")
-else:
-    sniper = "Off"
-    pass
 
 @client.event
 async def on_connect():
@@ -90,7 +46,7 @@ async def on_connect():
 
  {Fore.LIGHTRED_EX}Servers: ({Fore.RESET}{len(client.guilds)}{Fore.LIGHTRED_EX}) | Friends: ({Fore.RESET}{len(client.user.friends)}{Fore.LIGHTRED_EX})
 
- {Fore.LIGHTRED_EX}Prefix: ({Fore.RESET}{prefix}{Fore.LIGHTRED_EX}) | Nitro Sniper: ({Fore.RESET}{sniper}{Fore.LIGHTRED_EX})
+ {Fore.LIGHTRED_EX}Prefix: ({Fore.RESET}{prefix}{Fore.LIGHTRED_EX}) 
 
     '''.replace('░', f'{Fore.LIGHTRED_EX}░{Fore.RESET}'))
 
@@ -162,11 +118,9 @@ async def fun(ctx):
     embed.set_author(name="𝘿𝙤𝙪𝙗𝙡𝙚𝘽𝙡𝙖𝙙𝙚𝙙 𝙎𝙚𝙡𝙛𝙗𝙤𝙩",icon_url=member.avatar_url)
     embed.set_thumbnail(url=member.avatar_url)
     embed.set_image(url='https://cdn.discordapp.com/attachments/803414709196816486/803845997930872862/image4.gif')
-    embed.add_field(name="𝘼𝙨𝙘𝙞𝙞 🧊",value="`𝘚𝘦𝘯𝘥 𝘈 𝘔𝘦𝘴𝘴𝘢𝘨𝘦 𝘐𝘯 𝘈𝘴𝘤𝘪𝘪`",inline=False)
     embed.add_field(name="𝙂𝙖𝙮𝙧𝙖𝙩𝙚 🧊",value="`𝘎𝘢𝘺𝘳𝘢𝘵𝘦 𝘚𝘰𝘮𝘦𝘰𝘯𝘦`",inline=False)
     embed.add_field(name="𝙎𝙞𝙢𝙥𝙧𝙖𝙩𝙚 🧊",value="`𝘚𝘪𝘮𝘱𝘳𝘢𝘵𝘦 𝘚𝘰𝘮𝘦𝘰𝘯𝘦`",inline=False)
     embed.add_field(name="𝙍𝙚𝙫𝙚𝙧𝙨𝙚 🧊",value="`𝘙𝘦𝘷𝘦𝘳𝘴𝘦 𝘠𝘰𝘶𝘳 𝘔𝘦𝘴𝘴𝘢𝘨𝘦`",inline=False)
-    embed.add_field(name="𝘽𝙡𝙖𝙣𝙠 🧊",value="`𝘚𝘦𝘯𝘥 𝘈 𝘉𝘭𝘢𝘯𝘬 𝘔𝘦𝘴𝘢𝘨𝘦`",inline=False)
     embed.add_field(name="8𝙗𝙖𝙡𝙡 🧊",value="`𝘍𝘰𝘳 8𝘣𝘢𝘭𝘭`",inline=False)
     embed.add_field(name="𝙎𝙖𝙮 🧊",value="`𝘚𝘦𝘯𝘥 𝘈 𝘔𝘦𝘴𝘴𝘢𝘨𝘦 𝘐𝘯 𝘌𝘮𝘣𝘦𝘥`",inline=False)
     embed.set_footer(text=f"Made by zav#7500 | requested by {member}")
@@ -209,10 +163,7 @@ async def watch(ctx, *, message):
     time = now.strftime("%H:%M:%S")
     print(f" {Fore.LIGHTRED_EX}[{Fore.RESET}{time}{Fore.LIGHTRED_EX}] Command Used | {Fore.RESET}Watch\n")
     await ctx.message.delete()
-    await client.change_presence(
-        activity=discord.Activity(
-            type=discord.ActivityType.watching,
-            name=message))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching,name=message))
 
 @client.command(aliases=['playing'])
 async def play(ctx, *, text):
@@ -269,24 +220,7 @@ async def _ball(ctx, *, question):
     embed.set_author(name="DoubleBladed - 8 Ball game") 
     embed.set_footer(text=f"Made by zav#7500 | requested by {client.user}")
     await ctx.send(embed=embed)
-
-@client.command()
-async def ascii(ctx, *, text):
-    time = now.strftime("%H:%M:%S")
-    print(f" {Fore.LIGHTRED_EX}[{Fore.RESET}{time}{Fore.LIGHTRED_EX}] Command Used | {Fore.RESET}Ascii\n")
-    await ctx.message.delete()
-    r = requests.get(f"http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(text)}").text
-    if len("```"+r+"```") > 2000:
-        return
-    await ctx.send(f"```{r}```")
-
-@client.command()
-async def blank(ctx):
-    time = now.strftime("%H:%M:%S")
-    print(f" {Fore.LIGHTRED_EX}[{Fore.RESET}{time}{Fore.LIGHTRED_EX}] Command Used | {Fore.RESET}Blank\n")
-    await ctx.message.delete()
-    await ctx.send("ﾠﾠ"+"\n" * 400 + "ﾠﾠ")
-
+    
 @client.command()
 async def gayrate(ctx, member: discord.Member):
   time = now.strftime("%H:%M:%S")
